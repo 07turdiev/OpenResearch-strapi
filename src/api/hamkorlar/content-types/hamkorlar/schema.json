@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hamkorlars",
+  "info": {
+    "singularName": "hamkorlar",
+    "pluralName": "hamkorlars",
+    "displayName": "Hamkorlar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": false
+    }
+  },
+  "attributes": {
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}
