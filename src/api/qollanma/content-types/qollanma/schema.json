@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "qollanmas",
+  "info": {
+    "singularName": "qollanma",
+    "pluralName": "qollanmas",
+    "displayName": "Mualliflar uchun qo‘llanma"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "Nomi": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "Text": {
+      "type": "blocks",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    }
+  }
+}

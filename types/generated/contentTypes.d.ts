@@ -611,6 +611,111 @@ export interface ApiJurnalHaqidaJurnalHaqida
   };
 }
 
+export interface ApiMaqolaYuborishMaqolaYuborish
+  extends Struct.SingleTypeSchema {
+  collectionName: 'maqola_yuborishs';
+  info: {
+    displayName: 'Maqola Yuborish';
+    pluralName: 'maqola-yuborishs';
+    singularName: 'maqola-yuborish';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::maqola-yuborish.maqola-yuborish'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    qr: Schema.Attribute.Media<'images'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Telefon: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Telegram: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Telegram2: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiQollanmaQollanma extends Struct.CollectionTypeSchema {
+  collectionName: 'qollanmas';
+  info: {
+    displayName: 'Mualliflar uchun qo\u2018llanma';
+    pluralName: 'qollanmas';
+    singularName: 'qollanma';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::qollanma.qollanma'
+    >;
+    Nomi: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publishedAt: Schema.Attribute.DateTime;
+    Text: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTadbirlarTadbirlar extends Struct.CollectionTypeSchema {
   collectionName: 'tadbirlars';
   info: {
@@ -1389,6 +1494,8 @@ declare module '@strapi/strapi' {
       'api::elonlar.elonlar': ApiElonlarElonlar;
       'api::hamkorlar.hamkorlar': ApiHamkorlarHamkorlar;
       'api::jurnal-haqida.jurnal-haqida': ApiJurnalHaqidaJurnalHaqida;
+      'api::maqola-yuborish.maqola-yuborish': ApiMaqolaYuborishMaqolaYuborish;
+      'api::qollanma.qollanma': ApiQollanmaQollanma;
       'api::tadbirlar.tadbirlar': ApiTadbirlarTadbirlar;
       'api::tahrir-hayati.tahrir-hayati': ApiTahrirHayatiTahrirHayati;
       'api::tahririyat-xodimlari.tahririyat-xodimlari': ApiTahririyatXodimlariTahririyatXodimlari;
