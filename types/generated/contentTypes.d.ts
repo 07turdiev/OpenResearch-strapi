@@ -914,6 +914,52 @@ export interface ApiTahririyatXodimlariTahririyatXodimlari
   };
 }
 
+export interface ApiTezTezBeriladiganSavollarTezTezBeriladiganSavollar
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tez_tez_beriladigan_savollars';
+  info: {
+    displayName: 'Tez tez beriladigan savollar';
+    pluralName: 'tez-tez-beriladigan-savollars';
+    singularName: 'tez-tez-beriladigan-savollar';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Javob: Schema.Attribute.Blocks &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tez-tez-beriladigan-savollar.tez-tez-beriladigan-savollar'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    Savol: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiYangiliklarYangiliklar extends Struct.CollectionTypeSchema {
   collectionName: 'yangiliklars';
   info: {
@@ -1499,6 +1545,7 @@ declare module '@strapi/strapi' {
       'api::tadbirlar.tadbirlar': ApiTadbirlarTadbirlar;
       'api::tahrir-hayati.tahrir-hayati': ApiTahrirHayatiTahrirHayati;
       'api::tahririyat-xodimlari.tahririyat-xodimlari': ApiTahririyatXodimlariTahririyatXodimlari;
+      'api::tez-tez-beriladigan-savollar.tez-tez-beriladigan-savollar': ApiTezTezBeriladiganSavollarTezTezBeriladiganSavollar;
       'api::yangiliklar.yangiliklar': ApiYangiliklarYangiliklar;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
