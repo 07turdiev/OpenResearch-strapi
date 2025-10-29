@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "mualliflars",
+  "info": {
+    "singularName": "mualliflar",
+    "pluralName": "mualliflars",
+    "displayName": "Mualliflar "
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Ism_familiyasi": {
+      "type": "text",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "Ism_familiyasi"
+    },
+    "jurnal_sonlarises": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::jurnal-sonlari.jurnal-sonlari",
+      "mappedBy": "mualliflar"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "murojaatlars",
+  "info": {
+    "singularName": "murojaatlar",
+    "pluralName": "murojaatlars",
+    "displayName": "Murojaatlar"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Ismi": {
+      "type": "string"
+    },
+    "Telefon": {
+      "type": "string"
+    },
+    "Murojaat_matni": {
+      "type": "blocks"
+    }
+  }
+}

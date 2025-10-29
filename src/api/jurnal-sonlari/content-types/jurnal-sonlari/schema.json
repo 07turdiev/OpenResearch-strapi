@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jurnal_sonlaris",
+  "info": {
+    "singularName": "jurnal-sonlari",
+    "pluralName": "jurnal-sonlaris",
+    "displayName": "Jurnal sonlari"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Mavzu": {
+      "type": "text",
+      "required": true
+    },
+    "Yonalishi": {
+      "type": "string",
+      "required": true
+    },
+    "Maqola_ID": {
+      "type": "biginteger",
+      "required": true
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "mualliflar": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mualliflar.mualliflar",
+      "inversedBy": "jurnal_sonlarises"
+    }
+  }
+}

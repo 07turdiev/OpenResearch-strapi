@@ -1,0 +1,38 @@
+{
+  "kind": "singleType",
+  "collectionName": "aloqas",
+  "info": {
+    "singularName": "aloqa",
+    "pluralName": "aloqas",
+    "displayName": "Aloqa"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Telefon": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "Telegram": {
+      "type": "string"
+    },
+    "Instagram": {
+      "type": "string"
+    },
+    "Facebook": {
+      "type": "string"
+    },
+    "Twitter": {
+      "type": "string"
+    },
+    "Youtube": {
+      "type": "string"
+    }
+  }
+}

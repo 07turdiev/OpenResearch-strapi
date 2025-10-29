@@ -467,6 +467,37 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAloqaAloqa extends Struct.SingleTypeSchema {
+  collectionName: 'aloqas';
+  info: {
+    displayName: 'Aloqa';
+    pluralName: 'aloqas';
+    singularName: 'aloqa';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email & Schema.Attribute.Required;
+    Facebook: Schema.Attribute.String;
+    Instagram: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::aloqa.aloqa'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Telefon: Schema.Attribute.String & Schema.Attribute.Required;
+    Telegram: Schema.Attribute.String;
+    Twitter: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Youtube: Schema.Attribute.String;
+  };
+}
+
 export interface ApiElonlarElonlar extends Struct.CollectionTypeSchema {
   collectionName: 'elonlars';
   info: {
@@ -611,6 +642,42 @@ export interface ApiJurnalHaqidaJurnalHaqida
   };
 }
 
+export interface ApiJurnalSonlariJurnalSonlari
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'jurnal_sonlaris';
+  info: {
+    displayName: 'Jurnal sonlari';
+    pluralName: 'jurnal-sonlaris';
+    singularName: 'jurnal-sonlari';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jurnal-sonlari.jurnal-sonlari'
+    > &
+      Schema.Attribute.Private;
+    Maqola_ID: Schema.Attribute.BigInteger & Schema.Attribute.Required;
+    Mavzu: Schema.Attribute.Text & Schema.Attribute.Required;
+    mualliflar: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mualliflar.mualliflar'
+    >;
+    pdf: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Yonalishi: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface ApiMaqolaYuborishMaqolaYuborish
   extends Struct.SingleTypeSchema {
   collectionName: 'maqola_yuborishs';
@@ -665,6 +732,69 @@ export interface ApiMaqolaYuborishMaqolaYuborish
           localized: true;
         };
       }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMualliflarMualliflar extends Struct.CollectionTypeSchema {
+  collectionName: 'mualliflars';
+  info: {
+    displayName: 'Mualliflar ';
+    pluralName: 'mualliflars';
+    singularName: 'mualliflar';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Ism_familiyasi: Schema.Attribute.Text & Schema.Attribute.Required;
+    jurnal_sonlarises: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jurnal-sonlari.jurnal-sonlari'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::mualliflar.mualliflar'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Ism_familiyasi'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMurojaatlarMurojaatlar extends Struct.CollectionTypeSchema {
+  collectionName: 'murojaatlars';
+  info: {
+    displayName: 'Murojaatlar';
+    pluralName: 'murojaatlars';
+    singularName: 'murojaatlar';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Ismi: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::murojaatlar.murojaatlar'
+    > &
+      Schema.Attribute.Private;
+    Murojaat_matni: Schema.Attribute.Blocks;
+    publishedAt: Schema.Attribute.DateTime;
+    Telefon: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1537,10 +1667,14 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::aloqa.aloqa': ApiAloqaAloqa;
       'api::elonlar.elonlar': ApiElonlarElonlar;
       'api::hamkorlar.hamkorlar': ApiHamkorlarHamkorlar;
       'api::jurnal-haqida.jurnal-haqida': ApiJurnalHaqidaJurnalHaqida;
+      'api::jurnal-sonlari.jurnal-sonlari': ApiJurnalSonlariJurnalSonlari;
       'api::maqola-yuborish.maqola-yuborish': ApiMaqolaYuborishMaqolaYuborish;
+      'api::mualliflar.mualliflar': ApiMualliflarMualliflar;
+      'api::murojaatlar.murojaatlar': ApiMurojaatlarMurojaatlar;
       'api::qollanma.qollanma': ApiQollanmaQollanma;
       'api::tadbirlar.tadbirlar': ApiTadbirlarTadbirlar;
       'api::tahrir-hayati.tahrir-hayati': ApiTahrirHayatiTahrirHayati;
