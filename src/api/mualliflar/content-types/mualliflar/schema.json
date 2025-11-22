@@ -12,14 +12,15 @@
   "pluginOptions": {},
   "attributes": {
     "Ism_familiyasi": {
-      "type": "text",
+      "type": "string",
       "required": true
     },
     "slug": {
       "type": "uid",
-      "targetField": "Ism_familiyasi"
+      "targetField": "Ism_familiyasi",
+      "required": true
     },
-    "jurnal_sonlarises": {
+    "jurnal": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::jurnal-sonlari.jurnal-sonlari",

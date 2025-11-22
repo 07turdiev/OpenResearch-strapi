@@ -12,7 +12,7 @@
   "pluginOptions": {},
   "attributes": {
     "Mavzu": {
-      "type": "text",
+      "type": "string",
       "required": true
     },
     "Yonalishi": {
@@ -35,7 +35,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::mualliflar.mualliflar",
-      "inversedBy": "jurnal_sonlarises"
+      "inversedBy": "jurnal"
     }
   }
 }

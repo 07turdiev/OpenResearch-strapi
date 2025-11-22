@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-10-30T12:42:00.836Z"
+    "x-generation-date": "2025-11-22T10:05:34.024Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -11832,7 +11832,7 @@
               "slug": {
                 "type": "string"
               },
-              "jurnal_sonlarises": {
+              "jurnal": {
                 "type": "array",
                 "items": {
                   "type": "object",
@@ -13139,7 +13139,8 @@
         "properties": {
           "data": {
             "required": [
-              "Ism_familiyasi"
+              "Ism_familiyasi",
+              "slug"
             ],
             "type": "object",
             "properties": {
@@ -13149,7 +13150,7 @@
               "slug": {
                 "type": "string"
               },
-              "jurnal_sonlarises": {
+              "jurnal": {
                 "type": "array",
                 "items": {
                   "oneOf": [
@@ -13222,7 +13223,8 @@
       "Mualliflar": {
         "type": "object",
         "required": [
-          "Ism_familiyasi"
+          "Ism_familiyasi",
+          "slug"
         ],
         "properties": {
           "id": {
@@ -13237,7 +13239,7 @@
           "slug": {
             "type": "string"
           },
-          "jurnal_sonlarises": {
+          "jurnal": {
             "type": "array",
             "items": {
               "type": "object",
@@ -13872,7 +13874,7 @@
                     "slug": {
                       "type": "string"
                     },
-                    "jurnal_sonlarises": {
+                    "jurnal": {
                       "type": "array",
                       "items": {
                         "type": "object",
