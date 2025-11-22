@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2025-11-22T10:05:34.024Z"
+    "x-generation-date": "2025-11-22T10:58:09.694Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -11137,6 +11137,11 @@
                 ],
                 "example": "string or id"
               },
+              "views": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
+              },
               "locale": {
                 "type": "string"
               },
@@ -11994,6 +11999,11 @@
                         }
                       }
                     },
+                    "views": {
+                      "type": "string",
+                      "pattern": "^\\d*$",
+                      "example": "123456789"
+                    },
                     "createdAt": {
                       "type": "string",
                       "format": "date-time"
@@ -12100,6 +12110,11 @@
                 }
               }
             }
+          },
+          "views": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
           },
           "createdAt": {
             "type": "string",
@@ -13940,6 +13955,11 @@
                       }
                     }
                   }
+                },
+                "views": {
+                  "type": "string",
+                  "pattern": "^\\d*$",
+                  "example": "123456789"
                 },
                 "createdAt": {
                   "type": "string",
@@ -18408,6 +18428,11 @@
                 "example": "string or id"
               },
               "Text": {},
+              "views": {
+                "type": "string",
+                "pattern": "^\\d*$",
+                "example": "123456789"
+              },
               "locale": {
                 "type": "string"
               },
@@ -19089,6 +19114,11 @@
             }
           },
           "Text": {},
+          "views": {
+            "type": "string",
+            "pattern": "^\\d*$",
+            "example": "123456789"
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -19277,6 +19307,11 @@
                   }
                 },
                 "Text": {},
+                "views": {
+                  "type": "string",
+                  "pattern": "^\\d*$",
+                  "example": "123456789"
+                },
                 "createdAt": {
                   "type": "string",
                   "format": "date-time"

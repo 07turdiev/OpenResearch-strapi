@@ -36,6 +36,10 @@
       "relation": "manyToOne",
       "target": "api::mualliflar.mualliflar",
       "inversedBy": "jurnal"
+    },
+    "views": {
+      "type": "biginteger",
+      "default": "0"
     }
   }
 }

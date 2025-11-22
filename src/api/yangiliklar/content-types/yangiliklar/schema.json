@@ -64,6 +64,15 @@
         }
       },
       "required": true
+    },
+    "views": {
+      "type": "biginteger",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": "0"
     }
   }
 }
