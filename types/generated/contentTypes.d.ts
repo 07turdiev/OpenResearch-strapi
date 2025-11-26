@@ -620,25 +620,64 @@ export interface ApiJurnalSonlariJurnalSonlari
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    jurnallars: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jurnallar.jurnallar'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::jurnal-sonlari.jurnal-sonlari'
     > &
       Schema.Attribute.Private;
-    Maqola_ID: Schema.Attribute.BigInteger & Schema.Attribute.Required;
-    Mavzu: Schema.Attribute.String & Schema.Attribute.Required;
-    mualliflar: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::mualliflar.mualliflar'
-    >;
-    pdf: Schema.Attribute.Media<'files'> & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    sana: Schema.Attribute.Date & Schema.Attribute.Required;
+    slug: Schema.Attribute.UID<'soni'>;
+    soni: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    views: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<'0'>;
-    Yonalishi: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ApiJurnallarJurnallar extends Struct.CollectionTypeSchema {
+  collectionName: 'jurnallars';
+  info: {
+    displayName: 'Jurnallar';
+    pluralName: 'jurnallars';
+    singularName: 'jurnallar';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    jurnal_sonlari: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::jurnal-sonlari.jurnal-sonlari'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jurnallar.jurnallar'
+    > &
+      Schema.Attribute.Private;
+    maqola_id: Schema.Attribute.String;
+    mavzu: Schema.Attribute.String & Schema.Attribute.Required;
+    muallif: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::mualliflar.mualliflar'
+    >;
+    pdf: Schema.Attribute.Media<'files'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'mavzu'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    viewa: Schema.Attribute.BigInteger & Schema.Attribute.DefaultTo<'0'>;
+    yonalish: Schema.Attribute.Relation<'manyToOne', 'api::yonalish.yonalish'>;
   };
 }
 
@@ -717,9 +756,9 @@ export interface ApiMualliflarMualliflar extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Ism_familiyasi: Schema.Attribute.String & Schema.Attribute.Required;
-    jurnal: Schema.Attribute.Relation<
+    jurnallars: Schema.Attribute.Relation<
       'oneToMany',
-      'api::jurnal-sonlari.jurnal-sonlari'
+      'api::jurnallar.jurnallar'
     >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -1124,6 +1163,40 @@ export interface ApiYangiliklarYangiliklar extends Struct.CollectionTypeSchema {
         };
       }> &
       Schema.Attribute.DefaultTo<'0'>;
+  };
+}
+
+export interface ApiYonalishYonalish extends Struct.CollectionTypeSchema {
+  collectionName: 'yonalishes';
+  info: {
+    displayName: 'Yonalish';
+    pluralName: 'yonalishes';
+    singularName: 'yonalish';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    jurnallars: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::jurnallar.jurnallar'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::yonalish.yonalish'
+    > &
+      Schema.Attribute.Private;
+    nomi_en: Schema.Attribute.String & Schema.Attribute.Required;
+    nomi_ru: Schema.Attribute.String & Schema.Attribute.Required;
+    nomi_uz: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -1642,6 +1715,7 @@ declare module '@strapi/strapi' {
       'api::hamkorlar.hamkorlar': ApiHamkorlarHamkorlar;
       'api::jurnal-haqida.jurnal-haqida': ApiJurnalHaqidaJurnalHaqida;
       'api::jurnal-sonlari.jurnal-sonlari': ApiJurnalSonlariJurnalSonlari;
+      'api::jurnallar.jurnallar': ApiJurnallarJurnallar;
       'api::maqola-yuborish.maqola-yuborish': ApiMaqolaYuborishMaqolaYuborish;
       'api::mualliflar.mualliflar': ApiMualliflarMualliflar;
       'api::murojaatlar.murojaatlar': ApiMurojaatlarMurojaatlar;
@@ -1651,6 +1725,7 @@ declare module '@strapi/strapi' {
       'api::tahririyat-xodimlari.tahririyat-xodimlari': ApiTahririyatXodimlariTahririyatXodimlari;
       'api::tez-tez-beriladigan-savollar.tez-tez-beriladigan-savollar': ApiTezTezBeriladiganSavollarTezTezBeriladiganSavollar;
       'api::yangiliklar.yangiliklar': ApiYangiliklarYangiliklar;
+      'api::yonalish.yonalish': ApiYonalishYonalish;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -20,11 +20,11 @@
       "targetField": "Ism_familiyasi",
       "required": true
     },
-    "jurnal": {
+    "jurnallars": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::jurnal-sonlari.jurnal-sonlari",
-      "mappedBy": "mualliflar"
+      "target": "api::jurnallar.jurnallar",
+      "mappedBy": "muallif"
     }
   }
 }

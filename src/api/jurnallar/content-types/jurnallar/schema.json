@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jurnallars",
+  "info": {
+    "singularName": "jurnallar",
+    "pluralName": "jurnallars",
+    "displayName": "Jurnallar"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mavzu": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "mavzu"
+    },
+    "yonalish": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::yonalish.yonalish",
+      "inversedBy": "jurnallars"
+    },
+    "maqola_id": {
+      "type": "string",
+      "required": false
+    },
+    "pdf": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "muallif": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::mualliflar.mualliflar",
+      "inversedBy": "jurnallars"
+    },
+    "viewa": {
+      "type": "biginteger",
+      "default": "0"
+    },
+    "jurnal_sonlari": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::jurnal-sonlari.jurnal-sonlari",
+      "inversedBy": "jurnallars"
+    }
+  }
+}

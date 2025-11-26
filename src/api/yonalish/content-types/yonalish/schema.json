@@ -1,33 +1,33 @@
 {
   "kind": "collectionType",
-  "collectionName": "jurnal_sonlaris",
+  "collectionName": "yonalishes",
   "info": {
-    "singularName": "jurnal-sonlari",
-    "pluralName": "jurnal-sonlaris",
-    "displayName": "Jurnal sonlari"
+    "singularName": "yonalish",
+    "pluralName": "yonalishes",
+    "displayName": "Yonalish"
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "soni": {
+    "nomi_uz": {
       "type": "string",
       "required": true
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "soni"
+    "nomi_en": {
+      "type": "string",
+      "required": true
     },
-    "sana": {
-      "type": "date",
+    "nomi_ru": {
+      "type": "string",
       "required": true
     },
     "jurnallars": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::jurnallar.jurnallar",
-      "mappedBy": "jurnal_sonlari"
+      "mappedBy": "yonalish"
     }
   }
 }
